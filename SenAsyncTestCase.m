@@ -42,12 +42,10 @@
     self.expectedStatus = status;
     self.loopUntil = [NSDate dateWithTimeIntervalSinceNow:timeout];
     
-    NSLog(@"Wait loop start");
     while (!self.notified && [self.loopUntil timeIntervalSinceNow] > 0) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
                                  beforeDate:self.loopUntil];
     }
-    NSLog(@"Wait loop finished");
     
     // Only assert when notified. Do not assert when timed out
     // Fail if not notified
@@ -75,7 +73,6 @@
     self.notifiedStatus = status;
     // self.notified must be set at the last of this method
     self.notified = YES;
-    NSLog(@"Notified");
 }
 
 @end
