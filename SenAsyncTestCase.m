@@ -42,9 +42,11 @@
     self.expectedStatus = status;
     self.loopUntil = [NSDate dateWithTimeIntervalSinceNow:timeout];
     
+    NSDate *dt = [NSDate dateWithTimeIntervalSinceNow:0.1];
     while (!self.notified && [self.loopUntil timeIntervalSinceNow] > 0) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:self.loopUntil];
+                                 beforeDate:dt];
+        dt = [NSDate dateWithTimeIntervalSinceNow:0.1];
     }
     
     // Only assert when notified. Do not assert when timed out
@@ -62,9 +64,11 @@
     self.expectedStatus = SenAsyncTestCaseStatusUnknown;
     self.loopUntil = [NSDate dateWithTimeIntervalSinceNow:timeout];
     
+    NSDate *dt = [NSDate dateWithTimeIntervalSinceNow:0.1];
     while (!self.notified && [self.loopUntil timeIntervalSinceNow] > 0) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:self.loopUntil];
+                                 beforeDate:dt];
+        dt = [NSDate dateWithTimeIntervalSinceNow:0.1];
     }
 }
 
