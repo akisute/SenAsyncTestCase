@@ -13,6 +13,11 @@ Usage
 
 See `AsyncSenTestingKitTests.m` for more information.
 
+Known Problems
+--------------
+
+Sometimes SenAsyncTestCase doesn't print any logs nor any errors when tests failed. Breakpoints doesn't work too. Looks like this is because of how SenTestingKit runs test cases... but not sure why.
+
 LICENSE
 -------
 
